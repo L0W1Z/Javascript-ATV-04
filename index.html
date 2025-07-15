@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Compras</title>
+</head>
+<body>
+  <h2>Gerenciador de Lista de Compras</h2>
+  <p>Abra o console (F12) para interagir</p>
+
+  <script>
+    let lista = [];
+
+    while (true) {
+      let opcao = prompt(
+        "O que você deseja fazer?\n" +
+        "1 - Adicionar item\n" +
+        "2 - Remover item\n" +
+        "3 - Exibir lista\n" +
+        "4 - Atualizar item\n" +
+        "5 - Sair"
+      );
+
+      if (opcao === "1") {
+        
+        let novoItem = prompt("Digite o nome do item:");
+        lista.push(novoItem);
+        console.log("Item adicionado com sucesso!");
+
+      } else if (opcao === "2") {
+        
+        if (lista.length === 0) {
+          console.log("A lista está vazia.");
+        } else {
+          let removerIndex = prompt("Digite o índice do item que deseja remover:");
+          removerIndex = Number(removerIndex);
+          if (removerIndex >= 0 && removerIndex < lista.length) {
+            lista.splice(removerIndex, 1);
+            console.log("Item removido com sucesso!");
+          } else {
+            console.log("Índice inválido.");
+          }
+        }
+
+      } else if (opcao === "3") {
+    
+        if (lista.length === 0) {
+          console.log("A lista está vazia.");
+        } else {
+          console.log("Lista de Compras:");
+          let i = 0;
+          for (let item of lista) {
+            console.log(i + " - " + item);
+            i++;
+          }
+        }
+
+      } else if (opcao === "4") {
+        
+        if (lista.length === 0) {
+          console.log("A lista está vazia.");
+        } else {
+          let indiceAtualizar = prompt("Digite o índice do item que deseja atualizar:");
+          indiceAtualizar = Number(indiceAtualizar);
+          if (indiceAtualizar >= 0 && indiceAtualizar < lista.length) {
+            let novoValor = prompt("Digite o novo nome do item:");
+            lista[indiceAtualizar] = novoValor;
+            console.log("Item atualizado com sucesso!");
+          } else {
+            console.log("Índice inválido.");
+          }
+        }
+
+      } else if (opcao === "5") {
+        console.log("Encerrando o programa...");
+        break;
+
+      } else {
+        console.log("Opção inválida.");
+      }
+    }
+  </script>
+</body>
+</html>
